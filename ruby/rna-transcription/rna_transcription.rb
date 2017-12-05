@@ -2,7 +2,6 @@ module Complement
 
   def self.of_dna(dna)
     rna = dna.split('').map do |n|
-      # return 'A'
       case n
       when "A"
         "U"
@@ -23,5 +22,3 @@ end
 module BookKeeping
   VERSION = 4
 end
-
-# p Complement.of_dna('U')
