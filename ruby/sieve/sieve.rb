@@ -1,6 +1,7 @@
 class Sieve
   def initialize(n)
     @n = n
+    @primes = [2]
   end
 
   def primes
