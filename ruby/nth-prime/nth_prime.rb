@@ -1,5 +1,6 @@
 module Prime
   def self.nth(n)
+    raise ArgumentError if n == 0
     primes = [2]
     while primes.length < n
       primes << self.next_prime(primes.last)
