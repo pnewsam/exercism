@@ -2,24 +2,27 @@ module Prime
   def self.nth(n)
     primes = [2]
     while primes.length < n
-      primes << self.next_prime(primes)
+      primes << self.next_prime(primes.last)
     end
     primes.last
   end
 
-  def self.next_prime(primes)
-    next_prime = nil
-    t = primes.last
-    until next_prime
-      t += 1
-      (primes).each do |n|
-        if t % n == 0
-          next_prime = t
-          break
-        end
+  def self.next_prime(n)
+    prime = nil
+    x = n + 1
+    until prime
+      if self.prime?(x)
+        prime = x
+      else
+        x += 1
       end
     end
-    next_prime
+    prime
+  end
+  
+  def self.prime?(n)
+    (2..Math.sqrt(n)).each{|x|return false if n % x == 0}
+    true
   end
 end
 
