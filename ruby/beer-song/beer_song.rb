@@ -8,7 +8,7 @@ class BeerSong
     first + second
   end
   def verses(start, stop)
-    (stop..start).to_a.reverse.map{|n|verse(n)}.join("\n")
+    (start.downto(stop)).to_a.map{|n|verse(n)}.join("\n")
   end
 private
   def bottles(n)
