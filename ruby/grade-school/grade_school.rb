@@ -1,19 +1,18 @@
 class School
   attr_reader :students
   def initialize
-    @roster = [*1..7].zip([[],[],[],[],[],[],[]]).to_h
+    @roster = Hash.new{|h,k|h[k]=[]}
   end
   def students(grade)
     @roster[grade]
   end
   def add(student, grade)
-    @roster[grade] << student
-    @roster.each_value{|v|v.sort!}
+    @roster[grade].push(student).sort!
   end
   def students_by_grade
-    a = []
-    @roster.reject{|k,v|v.empty?}.each_pair{|k,v|a<<{grade: k, students: v}}
-    a
+    a=[]
+    @roster.each_pair{|k,v|a<<{grade:k,students:v}}
+    a.sort_by{|x|x[:grade]}
   end
 end
 
