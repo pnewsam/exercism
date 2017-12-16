@@ -1,6 +1,6 @@
 module Acronym
   def self.abbreviate(str)
-    str.split(/\s|-/).map{|x|x[0].upcase}.join('')
+    str.scan(/\b\w/).map(&:upcase)*''
   end
 end
 module BookKeeping
